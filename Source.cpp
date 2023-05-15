@@ -3,46 +3,70 @@
 
 using namespace std;
 
+class user
+{
+	string uname;
+	int password;
+public:
+	user()
+	{
+		uname = "default";
+		password = NULL;
+	}
+	user(string data ,int dataa )
+	{
+		uname = data;
+		password = dataa;
+	}
+
+	void setUname(string name)
+	{
+		uname = name;
+	}
+	void setpasword(int pass)
+	{
+		password = pass;
+	}
+
+	void login()
+	{
+		string temp;
+		int temp1;
+		cout << "Enter Username" << endl;
+		cin >> temp;
+		cout << "Enter Password" << endl;
+		cin >> temp1;
+		if (temp == uname&&password == temp1)
+		{
+			cout << "login Sucessfully";
+		}
+		else
+			cerr << "Wrong pass or Username";
+	}
+
+};
 int main()
 {
-	
-	
+	string Uname;
 	string fname;
 	string lname;
-	string uname;
-	int age;
 	int pasword;
 
-	cout << "Enter Frist Name" << endl;
+	cout << "Enter Your Frist Name" << endl;
 	cin >> fname;
-	cout << "Enter Last Name" << endl;
+	cout << "Enter Your Last Name" << endl;
 	cin >> lname;
-	cout << "Enter User Name" << endl;
-	cin >> uname;
-
-	cout << "Create Pasword " << endl; 
+	cout << "Create UserName" << endl;
+	cin >> Uname;
+	cout << "Create Pasword" << endl;
 	cin >> pasword;
-	cout << "Account created sucessfully" << endl;
-	string temp;
-	int temp1;
-	cout << "Enter User Name" << endl;
-	cin >> temp;
-	cout << "Enter Password" << endl;
-	
-	cin >> temp1;
 
-	if (uname==temp&&pasword==temp1)
-	{
-		cout << "Sucesfully login";
+	user u;
+	u.setUname(Uname);
+	u.setpasword(pasword);
 
-	}
-	else
-	{
-		cerr << "Wrong Password and Username";
-	}
+	u.login();
 
-
-	
 
 	system("pause");
 	return 0;
