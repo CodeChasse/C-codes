@@ -1,71 +1,100 @@
 #include<iostream>
-#include<string>
-
 using namespace std;
 
-class user
+class Node
 {
-	string uname;
-	int password;
+	int data;
+	Node* next;
 public:
-	user()
+	Node()
 	{
-		uname = "default";
-		password = NULL;
+		data = 0;
+		next = NULL; 
 	}
-	user(string data ,int dataa )
+	Node(int data)
 	{
-		uname = data;
-		password = dataa;
+		this->data = data;
 	}
-
-	void setUname(string name)
+	void setData(int data)
 	{
-		uname = name;
+		this->data = data;
 	}
-	void setpasword(int pass)
+	void setNext( Node *next)
 	{
-		password = pass;
+		this->next = next;
 	}
 
-	void login()
+	int getData()
 	{
-		string temp;
-		int temp1;
-		cout << "Enter Username" << endl;
-		cin >> temp;
-		cout << "Enter Password" << endl;
-		cin >> temp1;
-		if (temp == uname&&password == temp1)
+		return data;
+	}
+	Node* getNext()
+	{
+		return next;
+	}
+};
+
+
+class linkedList
+{
+	Node* head;
+public:
+	linkedList()
+	{
+		head = NULL;
+	}
+	linkedList(Node *head)
+	{
+		this->head = head;
+	}
+
+	void add(int data)
+	{
+		Node* n = new Node(data);
+		if (head == NULL)
 		{
-			cout << "login Sucessfully";
+			head = n;
 		}
 		else
-			cerr << "Wrong pass or Username";
+		{
+			Node* temp = head;
+			while (temp->getNext() != NULL)
+			{
+				temp = temp->getNext();
+			}
+			temp->setNext(n);
+		}
 	}
 
+	void display()
+	{
+		Node* temp = head;
+		if (head == NULL)
+		{
+			cerr << " empty";
+		}
+		else
+		{
+			while (temp != NULL)
+			{
+				cout << temp->getData() << endl;
+				temp = temp->getNext();
+			}
+		}
+	}
 };
+
+
+
 int main()
 {
-	string Uname;
-	string fname;
-	string lname;
-	int pasword;
+	linkedList l;
+	l.add(1);
+	l.add(2);
+	l.add(3);
+	l.add(4);
 
-	cout << "Enter Your Frist Name" << endl;
-	cin >> fname;
-	cout << "Enter Your Last Name" << endl;
-	cin >> lname;
-	cout << "Create UserName" << endl;
-	cin >> Uname;
-	cout << "Create Pasword" << endl;
-	cin >> pasword;
-
-	user u;
-	u.setUname(Uname);
-	u.setpasword(pasword);
-
-	u.login();
+	l.display();
 
 
 	system("pause");
