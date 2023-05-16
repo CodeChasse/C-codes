@@ -9,7 +9,7 @@ public:
 	Node()
 	{
 		data = 0;
-		next = NULL; 
+		next = NULL;
 	}
 	Node(int data)
 	{
@@ -19,7 +19,7 @@ public:
 	{
 		this->data = data;
 	}
-	void setNext( Node *next)
+	void setNext(Node *next)
 	{
 		this->next = next;
 	}
@@ -38,6 +38,7 @@ public:
 class linkedList
 {
 	Node* head;
+	Node* tail;
 public:
 	linkedList()
 	{
@@ -54,15 +55,12 @@ public:
 		if (head == NULL)
 		{
 			head = n;
+			tail = n;
 		}
 		else
 		{
-			Node* temp = head;
-			while (temp->getNext() != NULL)
-			{
-				temp = temp->getNext();
-			}
-			temp->setNext(n);
+			tail->setNext(n);
+			tail = tail->getNext();
 		}
 	}
 
@@ -82,6 +80,79 @@ public:
 			}
 		}
 	}
+
+	void update(int oldData, int newData)
+	{
+		Node* temp = head;
+		if (head == NULL)
+		{
+			cerr << "is Empty" << endl;
+		}
+		else
+		{
+			while (temp != NULL)
+			{
+				if (temp->getData() == oldData)
+				{
+					temp->setData(newData);
+					break;
+				}
+				temp = temp->getNext();
+			}
+		}
+	}
+	void search(int data)
+	{
+		if (head == NULL)
+		{
+			cerr << "is Empty";
+		}
+		else
+		{
+			Node* temp = head;
+			while (temp != NULL)
+			{
+				if (temp->getData() == data)
+				{
+					cout << "data found" << endl;
+					break;
+				}
+				temp = temp->getNext();
+			}
+		}
+	}
+
+	void del(int data)
+	{
+		if (head->getData() == data)
+		{
+			Node* temp = head;
+			head = head->getNext();
+			delete temp;
+		}
+		else
+		{
+			Node* temp = head;
+			Node* pre = head;
+			while (temp != NULL)
+			{
+				if (temp->getData() == data)
+				{
+					pre->setNext(pre->getNext());
+					delete temp;
+					break;
+
+				}
+				else
+				{
+					pre = temp;
+					temp = temp->getNext();
+
+				}
+			}
+		}
+
+	}
 };
 
 
@@ -94,6 +165,11 @@ int main()
 	l.add(3);
 	l.add(4);
 
+	//l.update(1,28);
+	//l.del(3);
+	//l.display();
+	//l.search(2);
+	l.del(2);
 	l.display();
 
 
