@@ -1,26 +1,28 @@
 #include<iostream>
-#include<stack>
+#include<queue>
 using namespace std;
 
 int main()
 {
-	stack<int>s;
+	queue<int>s;
 	for (int i = 0; i < 5; i++)
 	{
 		s.push(i);
 	}
 
-	cout <<  "size = " << s.size();
-	cout << "top = " << s.top();
-
+	cout <<  "size = " << s.size()<<endl;
+	cout << "front = " << s.front() << endl;
+	cout << "back = " << s.back() << endl;
 	s.pop();
-	cout << "size = " << s.size();
+	s.pop();
+	cout << "size = " << s.size()<<endl;
 	s.push(6);
 	s.push(7);
-
-	cout<<"size = "<<s.size();
-
-
+	cout << std::boolalpha << s.empty()<<endl;
+	//s.emplace();
+	cout << "size = " << s.size()<<endl;;;
+	
+	
 
 
 
