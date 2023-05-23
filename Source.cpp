@@ -1,30 +1,52 @@
-#include<iostream>
-#include<deque>
+#include <iostream>
 using namespace std;
-
-int main()
-{
-	deque<int>s;
-	for (int i = 0; i < 5; i++)
-	{
-		s.push_front(i);
+class Node {
+public:
+	int data;
+	Node* next;
+	Node* prev;
+};
+class Doublelinkedlist {
+public:
+	Node* head;
+	Node* tail;
+	Doublelinkedlist() {
+		head = NULL;
+		tail = NULL;
 	}
-
-	cout <<  "size = " << s.size()<<endl;
-	cout << "front = " << s.front() << endl;
-	cout << "back = " << s.back() << endl;
-	s.pop_front();
-	s.pop_back();
-	cout << "size = " << s.size()<<endl;
-	s.push_front(6);
-	s.push_back(7);
-	cout << std::boolalpha << s.empty()<<endl;
-	//s.emplace();
-	cout << "size = " << s.size()<<endl;;;
-	
-	
-
-
+	void addNode(int value) {
+		Node* newNode = new Node();
+		newNode->data = value;
+		newNode->next = NULL;
+		if (head == NULL) {
+			newNode->prev = NULL;
+			head = newNode;
+			tail = newNode;
+		}
+		else {
+			tail->next = newNode;
+			newNode->prev = tail;
+			tail = newNode;
+		}
+	}
+	Node* getHead() {
+		return head;
+	}
+	Node* getTail() {
+		return tail;
+	}
+};
+int main() {
+	Doublelinkedlist myList;
+	myList.addNode(33);
+	myList.addNode(56);
+	myList.addNode(21);
+	myList.addNode(44);
+	Node* currentNode = myList.getHead();
+	while (currentNode != NULL) {
+		cout << currentNode->data << " ";
+		currentNode = currentNode->next;
+	}
 
 	system("pause");
 	return 0;
