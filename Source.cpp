@@ -1,53 +1,63 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-class Node {
-public:
-	int data;
-	Node* next;
-	Node* prev;
+
+
+struct nodeType
+{
+	int info;
+	nodeType *link;
 };
-class Doublelinkedlist {
-public:
-	Node* head;
-	Node* tail;
-	Doublelinkedlist() {
-		head = NULL;
-		tail = NULL;
-	}
-	void addNode(int value) {
-		Node* newNode = new Node();
-		newNode->data = value;
-		newNode->next = NULL;
-		if (head == NULL) {
-			newNode->prev = NULL;
+
+//10 20 30 40
+
+int main()
+{
+	nodeType *head, *p, *q, *newNode;
+	int value = 0;
+	newNode = new nodeType;
+	head = p = newNode;
+
+	while (value != -1)
+	{
+		if (value == 0)
+		{
+			cout << "Enter list values (-1 to terminate) : ";
+			cin >> value;
+			if (value == -1) break;
+			head = new nodeType;
+			newNode = new nodeType;
 			head = newNode;
-			tail = newNode;
+			newNode->info = value;
+			p = newNode;
+
 		}
-		else {
-			tail->next = newNode;
-			newNode->prev = tail;
-			tail = newNode;
+		else
+		{
+			cout << "Enter list values (-1 to terminate) : ";
+			cin >> value;
+			if (value == -1) break;
+			newNode = new nodeType;
+			newNode->info = value;
+			p->link = newNode;
+			p = newNode;
+
 		}
+		newNode->link = NULL;
+
 	}
-	Node* getHead() {
-		return head;
-	}
-	Node* getTail() {
-		return tail;
-	}
-};
-int main() {
-	Doublelinkedlist myList;
-	myList.addNode(33);
-	myList.addNode(56);
-	myList.addNode(21);
-	myList.addNode(44);
-	Node* currentNode = myList.getHead();
-	while (currentNode != NULL) {
-		cout << currentNode->data << " ";
-		currentNode = currentNode->next;
+
+
+
+	q = head;
+
+	cout << q->info << " ";
+
+	while (q->link != NULL)
+	{
+		cout << q->link->info << " ";
+		q = q->link;
 	}
 
 	system("pause");
-	return 0;
+
 }
