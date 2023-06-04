@@ -1,42 +1,48 @@
 #include <iostream>
 
-class ArrayQueue {
+class Node {
+public:
+	int data;
+	Node* next;
+
+	Node(int val) {
+		data = val;
+		next = nullptr;
+	}
+};
+
+class LinkedListQueue {
 private:
-	int front;
-	int rear;
-	int capacity;
-	int* queueArray;
+	Node* front;
+	Node* rear;
 
 public:
-	ArrayQueue(int size) {
-		capacity = size;
-		front = rear = -1;
-		queueArray = new int[capacity];
+	LinkedListQueue() {
+		front = rear = nullptr;
 	}
 
-	~ArrayQueue() {
-		delete[] queueArray;
+	~LinkedListQueue() {
+		while (front != nullptr) {
+			Node* temp = front;
+			front = front->next;
+			delete temp;
+		}
 	}
 
 	bool isEmptyQueue() {
-		return front == -1;
-	}
-
-	bool isFullQueue() {
-		return (rear + 1) % capacity == front;
+		return front == nullptr;
 	}
 
 	void enQueue(int data) {
-		if (isFullQueue()) {
-			std::cout << "Queue Overflow!" << std::endl;
-			return;
+		Node* newNode = new Node(data);
+
+		if (isEmptyQueue()) {
+			front = rear = newNode;
 		}
-
-		rear = (rear + 1) % capacity;
-		queueArray[rear] = data;
-
-		if (front == -1)
-			front = rear;
+		else {
+			rear->next = newNode;
+			rear = newNode;
+		}
 	}
 
 	void deQueue() {
@@ -45,11 +51,12 @@ public:
 			return;
 		}
 
-		if (front == rear) {
-			front = rear = -1;
-		}
-		else {
-			front = (front + 1) % capacity;
-		}
+		Node* temp = front;
+		front = front->next;
+
+		if (front == nullptr)
+			rear = nullptr;
+
+		delete temp;
 	}
 };
