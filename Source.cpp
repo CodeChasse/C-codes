@@ -1,63 +1,73 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-
-
-struct nodeType
+class Car
 {
-	int info;
-	nodeType *link;
+private:
+	int speed;
+	char* name;
+	bool isOn;
+public:
+	Car();
+	void setName(char*);
+	char* getName();
+
+	void accelerate();
+	void brake();
+	int getSpeed();
+
+	void start();
+	void stop();
+	bool getIgnition();
+
+	void display();
 };
-
-//10 20 30 40
-
+Car::Car()
+{
+	cout << "Car Constructor is called" << endl;
+	speed = 0;
+	name = "";
+	isOn = false;
+}
+void Car::setName(char* n)
+{
+	name = n;
+}
+void Car::display()
+{
+	cout << "Car Object" << endl;
+	cout << "Name: " << name << endl;
+	cout << "Speed: " << speed << endl;
+	cout << "isOn: " << isOn << endl;
+}
+void Car::accelerate()
+{
+	if (speed<100)
+	{
+		speed += 5;
+	}
+}
+void Car::brake()
+{
+	if (speed != 0)
+	{
+		speed -= 5;
+	}
+}
 int main()
 {
-	nodeType *head, *p, *q, *newNode;
-	int value = 0;
-	newNode = new nodeType;
-	head = p = newNode;
-
-	while (value != -1)
+	Car c1;
+	c1.display();
+	c1.setName("Honda");
+	for (int i = 1; i < 100; i++)
 	{
-		if (value == 0)
-		{
-			cout << "Enter list values (-1 to terminate) : ";
-			cin >> value;
-			if (value == -1) break;
-			head = new nodeType;
-			newNode = new nodeType;
-			head = newNode;
-			newNode->info = value;
-			p = newNode;
-
-		}
-		else
-		{
-			cout << "Enter list values (-1 to terminate) : ";
-			cin >> value;
-			if (value == -1) break;
-			newNode = new nodeType;
-			newNode->info = value;
-			p->link = newNode;
-			p = newNode;
-
-		}
-		newNode->link = NULL;
-
+		c1.accelerate();
 	}
-
-
-
-	q = head;
-
-	cout << q->info << " ";
-
-	while (q->link != NULL)
+	c1.display();
+	for (int i = 1; i <= 25; i++)
 	{
-		cout << q->link->info << " ";
-		q = q->link;
+		c1.brake();
 	}
+	c1.display();
 
-	system("pause");
-
+	return 0;
 }
