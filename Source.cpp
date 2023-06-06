@@ -1,62 +1,81 @@
-#include <iostream>
+#include<iostream>
+using namespace std;
 
-class Node {
-public:
+class Node
+{
 	int data;
-	Node* next;
-
-	Node(int val) {
-		data = val;
-		next = nullptr;
-	}
-};
-
-class LinkedListQueue {
-private:
-	Node* front;
-	Node* rear;
-
+	Node* left;
+	Node* right;
 public:
-	LinkedListQueue() {
-		front = rear = nullptr;
+	Node()
+	{
+		int data = 0;
+		left = right = NULL;
+	}
+	Node(int data)
+	{
+		this->data = data;
+		left = right = NULL;
 	}
 
-	~LinkedListQueue() {
-		while (front != nullptr) {
-			Node* temp = front;
-			front = front->next;
-			delete temp;
-		}
+	void setLeft(Node* left)
+	{
+		this->left = left;
+	}
+	void setRight(Node* right)
+	{
+		this->right = right;
+	}
+	void setData(int data)
+	{
+		this->data = data;
 	}
 
-	bool isEmptyQueue() {
-		return front == nullptr;
+	Node* getLeft()
+	{
+		return left;
 	}
-
-	void enQueue(int data) {
-		Node* newNode = new Node(data);
-
-		if (isEmptyQueue()) {
-			front = rear = newNode;
-		}
-		else {
-			rear->next = newNode;
-			rear = newNode;
-		}
+	Node* getRight()
+	{
+		return right;
 	}
-
-	void deQueue() {
-		if (isEmptyQueue()) {
-			std::cout << "Queue Underflow!" << std::endl;
-			return;
-		}
-
-		Node* temp = front;
-		front = front->next;
-
-		if (front == nullptr)
-			rear = nullptr;
-
-		delete temp;
+	int getData()
+	{
+		return data;
 	}
 };
+
+
+class BST
+{
+	Node* root;
+public:
+
+	BST()
+	{
+		root = NULL;
+	}
+
+	void display()
+	{
+		if (root == NULL)
+		{
+			cout << "Root is Empty";
+		}
+		
+	}
+};
+
+
+
+
+
+int main()
+{
+	BST bst;
+	bst.display();
+
+
+	system("pause");
+	return 0;
+}
