@@ -34,7 +34,7 @@ public:
 	{
 		return Data;
 	}
-	Node* getleft()
+	Node* getLeft()
 	{
 		return Left;
 	}
@@ -69,25 +69,26 @@ public:
 				{
 					if (temp->getRight() == NULL)
 					{
-						temp->setData(data);
+						temp->setRight(N);
 						break;
 					}
 					else
 					{
-						temp->setData(temp->getData());
+						temp->setRight(temp->getRight());
 					}
 				}
 				else
 				{
 					if (temp->getData() > data)
 					{
-						if (temp->getData() == NULL)
+						if (temp->getLeft() == NULL)
 						{
-							temp->setData(data);
+							temp->setLeft(N);
+							break;
 						}
 						else
 						{
-							temp
+							temp->setLeft(temp->getLeft());
 						}
 					}
 
