@@ -1,79 +1,115 @@
 #include<iostream>
 using namespace std;
 
-class Node
-{
-	int data;
-	Node* left;
-	Node* right;
+class Node{
+	int Data;
+	Node* Right;
+	Node* Left;
 public:
 	Node()
 	{
-		int data = 0;
-		left = right = NULL;
+		Data = 0;
+		Right = Left = NULL;
 	}
 	Node(int data)
 	{
-		this->data = data;
-		left = right = NULL;
+		Data = data;
+		Right = Left = NULL;
 	}
 
+	void setData(int data)
+	{
+		Data = data;
+	}
 	void setLeft(Node* left)
 	{
-		this->left = left;
+		Left = left;
 	}
 	void setRight(Node* right)
 	{
-		this->right = right;
-	}
-	void setData(int data)
-	{
-		this->data = data;
+		Right = right;
 	}
 
-	Node* getLeft()
+	int getData()
 	{
-		return left;
+		return Data;
+	}
+	Node* getleft()
+	{
+		return Left;
 	}
 	Node* getRight()
 	{
-		return right;
-	}
-	int getData()
-	{
-		return data;
+		return Right;
 	}
 };
-
 
 class BST
 {
-	Node* root;
+	Node* Root;
 public:
-
 	BST()
 	{
-		root = NULL;
+		Root = NULL;
 	}
 
-	void display()
+	void Insert(int data)
 	{
-		if (root == NULL)
+		Node* N = new Node(data);
+		if (Root == NULL)
 		{
-			cout << "Root is Empty";
+			Root = N;
 		}
-		
+		else
+		{
+			Node* temp = Root;
+			while (true)
+			{
+				if (temp->getData() < data)
+				{
+					if (temp->getRight() == NULL)
+					{
+						temp->setData(data);
+						break;
+					}
+					else
+					{
+						temp->setData(temp->getData());
+					}
+				}
+				else
+				{
+					if (temp->getData() > data)
+					{
+						if (temp->getData() == NULL)
+						{
+							temp->setData(data);
+						}
+						else
+						{
+							temp
+						}
+					}
+
+				}
+			}
+		}
+	}
+
+
+	void Disply()
+	{
+		if (Root == NULL)
+		{
+			cerr << "Root is Empty";
+		}
 	}
 };
-
-
-
-
 
 int main()
 {
 	BST bst;
-	bst.display();
+	bst.Disply();
 
 
 	system("pause");
