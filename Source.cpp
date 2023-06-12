@@ -74,13 +74,11 @@ public:
 					}
 					else
 					{
-						temp->setRight(temp->getRight());
+						temp = temp->getRight();
 					}
 				}
 				else
 				{
-					if (temp->getData() > data)
-					{
 						if (temp->getLeft() == NULL)
 						{
 							temp->setLeft(N);
@@ -88,15 +86,43 @@ public:
 						}
 						else
 						{
-							temp->setLeft(temp->getLeft());
+							temp = temp->getLeft();
 						}
-					}
 
 				}
 			}
 		}
 	}
 
+	void Search(int data)
+	{
+		Node* a = new Node(data);
+		if (Root == a)
+		{
+			cout << "data found";
+		}
+		else
+		{
+			Node* temp = Root;
+			while (temp!=NULL)
+			
+			if (temp->getData() == data)
+			{
+				cout << "data found";
+				break;
+			}
+			else if (temp->getData() < data)
+			{
+				temp = temp->getRight();
+			}
+			else
+			{
+				temp = temp->getLeft();
+			}
+		}
+		cout << "data not found";
+
+	}
 
 	void Disply()
 	{
@@ -104,15 +130,24 @@ public:
 		{
 			cerr << "Root is Empty";
 		}
+		else
+		{
+			cerr << " root is not empty";
+		}
 	}
 };
 
 int main()
 {
 	BST bst;
+	bst.Insert(50);
+	bst.Insert(100);
+	bst.Insert(150);
+	bst.Insert(40);
+	bst.Insert(30);
+
+	bst.Search(1);
 	bst.Disply();
-
-
 	system("pause");
 	return 0;
 }
