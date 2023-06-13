@@ -1,0 +1,26 @@
+create database test0;
+create table `test0`.`tudent` (
+`name` varchar(10) Not Null,
+`id` int not null);
+
+
+alter table test0 . tudent
+add student_id int ;
+
+drop table test0.tudent;
+
+create table test0.student (
+st_name varchar(10) not null,
+st_id int not null
+);
+
+insert into test0.student (st_name , st_id) values ('muk' , 1);
+
+create table test0 . `order`(
+`order_id` int not null,
+`order_date` int not null
+);
+
+insert into test0.order(order_id , order_date) values (1 , 23);
+
+select * from test0.order;
