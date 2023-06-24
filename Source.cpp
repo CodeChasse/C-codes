@@ -1,153 +1,151 @@
 #include<iostream>
+#include<string>
+
 using namespace std;
 
-class Node{
-	int Data;
-	Node* Right;
-	Node* Left;
-public:
-	Node()
-	{
-		Data = 0;
-		Right = Left = NULL;
-	}
-	Node(int data)
-	{
-		Data = data;
-		Right = Left = NULL;
-	}
-
-	void setData(int data)
-	{
-		Data = data;
-	}
-	void setLeft(Node* left)
-	{
-		Left = left;
-	}
-	void setRight(Node* right)
-	{
-		Right = right;
-	}
-
-	int getData()
-	{
-		return Data;
-	}
-	Node* getLeft()
-	{
-		return Left;
-	}
-	Node* getRight()
-	{
-		return Right;
-	}
-};
-
-class BST
+class Customer
 {
-	Node* Root;
+private:
+	string Fname;
+	string Lname;
+	string Address;
+	string UserName;
+
+	int Password;
+	int Lisence;
+	int Age;
+	int ContactNo;
 public:
-	BST()
+	Customer()
 	{
-		Root = NULL;
-	}
+		Fname = " ";
+		Lname = " ";
+		Address = " ";
+		UserName = " ";
 
-	void Insert(int data)
-	{
-		Node* N = new Node(data);
-		if (Root == NULL)
-		{
-			Root = N;
-		}
-		else
-		{
-			Node* temp = Root;
-			while (true)
-			{
-				if (temp->getData() < data)
-				{
-					if (temp->getRight() == NULL)
-					{
-						temp->setRight(N);
-						break;
-					}
-					else
-					{
-						temp = temp->getRight();
-					}
-				}
-				else
-				{
-						if (temp->getLeft() == NULL)
-						{
-							temp->setLeft(N);
-							break;
-						}
-						else
-						{
-							temp = temp->getLeft();
-						}
-
-				}
-			}
-		}
-	}
-
-	void Search(int data)
-	{
-		Node* a = new Node(data);
-		if (Root == a)
-		{
-			cout << "data found";
-		}
-		else
-		{
-			Node* temp = Root;
-			while (temp!=NULL)
-			
-			if (temp->getData() == data)
-			{
-				cout << "data found";
-				break;
-			}
-			else if (temp->getData() < data)
-			{
-				temp = temp->getRight();
-			}
-			else
-			{
-				temp = temp->getLeft();
-			}
-		}
-		cout << "data not found";
+		Password = 0;
+		Lisence = 0;
+		Age = 0;
+		ContactNo = 0;
 
 	}
 
-	void Disply()
+	void SetFname(string fname)
 	{
-		if (Root == NULL)
-		{
-			cerr << "Root is Empty";
-		}
-		else
-		{
-			cerr << " root is not empty";
-		}
+		Fname = fname;
+	}
+	string GetFname()
+	{
+		return Fname;
+	}
+
+	void SetLname(string lname)
+	{
+		Lname = lname;
+	}
+	string GetLname()
+	{
+		return Lname;
+	}
+
+	void SetAddres(string adrs)
+	{
+		Address = adrs;
+	}
+	string GetAdress()
+	{
+		return Address;
+	}
+
+	void SetUserName(string User)
+	{
+		UserName = User;
+	}
+	string GetUserName()
+	{
+		return UserName;
+	}
+
+	void SetPassword(int pas)
+	{
+		Password = pas;
+	}
+	int GetPassword()
+	{
+		return Password;
+	}
+
+	void SetLisence(int Lis)
+	{
+		Lisence = Lis;
+	}
+	int GetLisence()
+	{
+		return Lisence;
+	}
+
+	void SetAge(int age)
+	{
+		Age = age;
+	}
+	int GetAge()
+	{
+		return Age;
+	}
+	
+	void SetContactNo(int contact)
+	{
+		ContactNo = contact;
+	}
+	int GetContactNo()
+	{
+		return ContactNo;
+	}
+
+};
+
+
+class Car{
+private:
+	string Brand;
+	string CarName;
+	int Model;
+public:
+	Car()
+	{
+		Brand = " ";
+		CarName = " ";
+		Model = 0;
+	}
+
+	void SetBrand(string brand)
+	{
+		Brand = brand;
 	}
 };
+
+
 
 int main()
 {
-	BST bst;
-	bst.Insert(50);
-	bst.Insert(100);
-	bst.Insert(150);
-	bst.Insert(40);
-	bst.Insert(30);
+	int Check;
 
-	bst.Search(1);
-	bst.Disply();
+	cout << "Welcome to Retal Car Management System" << endl;
+	cout << "If you want to sign up press 1 and If you want to login press 2" << endl;
+	cin >> Check;
+	if (Check == 1)
+	{
+		int Check1;
+		cout << "If you want to  sign up as a Customer press 1 or Admin press 2" << endl;
+		cin >> Check1;
+	}
+	else if (Check == 2)
+	{
+		int Check2;
+		cout << "If want to login as Customer press 1 or Admin press 2" << endl;
+		cin >> Check2;
+	}
+
 	system("pause");
 	return 0;
 }
