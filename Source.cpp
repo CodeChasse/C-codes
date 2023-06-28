@@ -122,8 +122,34 @@ public:
 	{
 		Brand = brand;
 	}
+	string Getbrand()
+	{
+		return Brand;
+	}
+
+	void SetCarName(string name)
+	{
+		CarName = name;
+	}
+	string GetCarName()
+	{
+		return CarName;
+	}
+
+	void GetModel(int model)
+	{
+		Model = model;
+	}
+	int GetModel()
+	{
+		return Model;
+	}
 };
 
+class Node{
+private:
+	Customer* nj;
+};
 
 
 int main()
@@ -138,6 +164,27 @@ int main()
 		int Check1;
 		cout << "If you want to  sign up as a Customer press 1 or Admin press 2" << endl;
 		cin >> Check1;
+		if (Check1 == 1)
+		{
+			Customer C1;
+			string fname, lname, adress, username;
+			int pass, no, age, lis;
+			cout << "Enter Your Frist name" << endl;
+			cin >> fname;
+			cout << "Enter Your Last name" << endl;
+			cin >> lname;
+			cout << "Enter Your Adress" << endl;
+			cin >> adress;
+			cout << "Enter Your Phone Number" << endl;
+			cin >> no;
+			cout << "Enter Your Age" << endl;
+			cin >> age;
+			cout << "Enter Your Lisence" << endl;
+			cin >> lis;
+			cout << "Create UserName" << endl;
+			cin >> username;
+
+		}
 	}
 	else if (Check == 2)
 	{
@@ -147,5 +194,6 @@ int main()
 	}
 
 	system("pause");
+
 	return 0;
 }
